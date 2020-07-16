@@ -182,6 +182,10 @@ export default SecondPage
 
 prove S3 is empty to show this is all happening live
 
+```
+$ aws s3 rm s3://glenselle.com --recursive
+```
+
 to deploy, install gatsby s3 plugin
 
 ```bash
