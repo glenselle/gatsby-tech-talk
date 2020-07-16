@@ -61,12 +61,76 @@ export const query = graphql`
 `
 ```
 
-mention the varieties of graphql queries
+generate new project using a starter for a blog
+
+```
+$ gatsby new glenselle.com https://github.com/gatsbyjs/gatsby-starter-blog
+```
+
+show different types of graphql queries
 
 1. dynamic page queries with tagging (shown above ^)
 2. static queries using `<StaticQuery />` or `useStaticQuery`
 
+show how page queries with params work in blog site
+
+now demonstrate static query in one of the components
+
+```javascript
+import { useStaticQuery, graphql } from "gatsby"
+
+const data = useStaticQuery(graphql`
+  query HeaderQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`)
+```
+
+### dynamic vs build-time data
+discuss the two and the pros/cons of each
+
+dynamic data
+- pro: always fresh
+- pro: no need to re-run build
+- con: slower w/ network latency
+
+build data
+- pro: really fast -- lives on the edge
+- pro: w/ gatsby/graphql easy and powerful query possibilities
+- con: static & therefore requires a re-build to refresh
+
 show how dynamic data fetching would work
+
+briefly talk about headless CMSs
+
+create strapi project
+
+```
+npx create-strapi-app yummy-cafe-backend --quickstart
+```
+
+create a docker-compose.yml
+
+```yaml
+version: '3'
+services:
+  strapi:
+    image: strapi/strapi
+    volumes:
+      - ./:/srv/app
+    ports:
+      - '1337:1337'
+```
+
+show Strapi UI and how to create models
+
+show API response in Postman
+
+now use React hooks to fetch data from API
 
 ```javascript
 import React, { useState, useEffect } from "react"
@@ -110,44 +174,6 @@ const SecondPage = () => {
 export default SecondPage
 ```
 
-### dynamic vs build-time data
-discuss the two and the pros/cons of each
-
-dynamic data
-- pro: always fresh
-- pro: no need to re-run build
-- con: slower w/ network latency
-
-build data
-- pro: really fast -- lives on the edge
-- pro: w/ gatsby/graphql easy and powerful query possibilities
-- con: static & therefore requires a re-build to refresh
-
-
-
-```bash
-$ npm i @rebass/preset emotion-theming --save
-```
-
-create strapi project
-
-```
-npx create-strapi-app yummy-cafe-backend --quickstart
-```
-
-create a docker-compose.yml
-
-```yaml
-version: '3'
-services:
-  strapi:
-    image: strapi/strapi
-    volumes:
-      - ./:/srv/app
-    ports:
-      - '1337:1337'
-```
-
 prove S3 is empty to show this is all happening live
 
 to deploy, install gatsby s3 plugin
@@ -158,7 +184,7 @@ $ npm i gatsby-plugin-s3 --save
 
 deploy to s3 add plugin in `gatsby-config.js`
 
-```json
+```javascript
 {
   resolve: `gatsby-plugin-s3`,
   options: {
