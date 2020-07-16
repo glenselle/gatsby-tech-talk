@@ -67,7 +67,7 @@ generate new project using a starter for a blog
 $ gatsby new glenselle.com https://github.com/gatsbyjs/gatsby-starter-blog
 ```
 
-show different types of graphql queries
+explain the two types of graphql queries Gatsby supports
 
 1. dynamic page queries with tagging (shown above ^)
 2. static queries using `<StaticQuery />` or `useStaticQuery`
@@ -129,6 +129,12 @@ services:
 show Strapi UI and how to create models
 
 show API response in Postman
+
+generate new project
+```bash
+$ gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
+```
+
 
 now use React hooks to fetch data from API
 
